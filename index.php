@@ -1,5 +1,5 @@
 <?php
-if (file_exists(__DIR__ . '/GeoLite2-City.mmdb.gz')) {
+if (!file_exists(__DIR__ . '/GeoLite2-City.mmdb')) {
     // uncompress this first
     $file_name = __DIR__ . '/GeoLite2-City.mmdb.gz';
     $buffer_size = 4096; // read 4kb at a time
