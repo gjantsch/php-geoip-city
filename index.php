@@ -29,7 +29,7 @@ if (!file_exists(__DIR__ . '/GeoLite2-City.mmdb')) {
 <body>
 <h1>GEO IP</h1>
 <h2>IPs a Consultar:</h2>
-<form action="consulta.php" method="post">
+<form action="consultar.php" method="post">
     <p>
         <textarea name="ips"></textarea>
     </p>
