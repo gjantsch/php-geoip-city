@@ -49,16 +49,16 @@ if (!empty($ips)) {
                 $tt_state = 0;
                 echo "<li>$state: " . count($cities) . " cidades <ul>";
                 foreach($cities as $city => $ips) {
-                    echo "<li>$city: " . count($ips) . " ips</li>";
+                    echo "<li>$city: " . count($ips) . "</li>";
                     $tt_state += count($ips);
                     $tt_country += count($ips);
 
                 }
-                echo "<li><strong>Total: $tt_state ips</strong></li>";
+                echo "<li><strong>Total: $tt_state</strong></li>";
                 echo "</ul></li>";
 
             }
-            echo "<li><strong>Total: $tt_country ips</strong></li>";
+            echo "<li><strong>Total: $tt_country</strong></li>";
             echo "</ul></li>";
         }
         echo "</ul>";
