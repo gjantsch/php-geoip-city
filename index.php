@@ -1,3 +1,21 @@
+<?php
+if (file_exists(__DIR__ . '/GeoLite2-City.mmdb.gz')) {
+    // uncompress this first
+    $file_name = __DIR__ . '/GeoLite2-City.mmdb.gz';
+    $buffer_size = 4096; // read 4kb at a time
+    $out_file_name = str_replace('.gz', '', $file_name);
+
+    $file = gzopen($file_name, 'rb');
+    $out_file = fopen($out_file_name, 'wb');
+
+    while (!gzeof($file)) {
+        fwrite($out_file, gzread($file, $buffer_size));
+    }
+
+    fclose($out_file);
+    gzclose($file);
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
