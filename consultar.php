@@ -37,7 +37,7 @@ if (!empty($ips)) {
 
                 $record = $reader->city($ip);
                 $resultado[$record->country->isoCode][$record->mostSpecificSubdivision->isoCode][$record->city->name][] = $ip;
-                $lista[$record->city->name . '-' . $ip] = "$ip {$record->country->isoCode} {$record->mostSpecificSubdivision->isoCode}{ $record->city->name}";
+                $lista[str_replace(' ', '-', $record->city->name) . '-' . str_replace('.', '-', $ip)] = "$ip {$record->country->isoCode} {$record->mostSpecificSubdivision->isoCode} { $record->city->name}";
 
             }
         }
