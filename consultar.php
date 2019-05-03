@@ -26,6 +26,7 @@ $reader = new Reader(__DIR__ . '/GeoLite2-City.mmdb');
 <h2>Resultado:</h2>
 <?php
 $ips = isset($_POST['ips']) ? trim($_POST['ips']) : null;
+$lista = [];
 if (!empty($ips)) {
     $ips = explode("\n", $ips);
     if (is_array($ips) && count($ips) > 0) {
@@ -36,9 +37,12 @@ if (!empty($ips)) {
 
                 $record = $reader->city($ip);
                 $resultado[$record->country->isoCode][$record->mostSpecificSubdivision->isoCode][$record->city->name][] = $ip;
+                $lista[$record->city->name] = "$ip {$record->country->isoCode}{$record->mostSpecificSubdivision->isoCode}{$record->city->name}";
 
             }
         }
+
+        ksort($lista);
 
         echo "<ul>";
         foreach ($resultado as $country => $states) {
@@ -63,6 +67,8 @@ if (!empty($ips)) {
         }
         echo "</ul>";
 
+        echo "<h2>Geral</h2>";
+        echo "<pre>".implode(PHP_EOL,$lista)."</pre>";
         
     } else {
         echo '<div class="alert alert-danger" role="alert">Informe ao menos um ip!</div>';
